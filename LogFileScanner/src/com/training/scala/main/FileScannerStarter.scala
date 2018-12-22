@@ -19,9 +19,7 @@ object FileScannerStarter {
       else if(args(0).equalsIgnoreCase("strict")) false
       else throw new IllegalArgumentException("Invalid evaluation type. It should be lazy/strict")
     
-    var scanner:FileScanner = 
-      if(lazyEvaluation) new StreamFileScanner() 
-      else new ListFileScanner()
+    var scanner:FileScanner = FileScannerFactory.getScanner(lazyEvaluation)
     
     val lines:Array[String] = scanner.scan(args(1), args(2), args(3).toInt);
     lines.foreach(println)

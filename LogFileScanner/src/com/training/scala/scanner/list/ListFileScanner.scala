@@ -1,12 +1,12 @@
 package com.training.scala.scanner.list
 
-import com.training.scala.scanner.FileScanner
-import scala.io.Source
+import com.training.scala.scanner.AbstractFileScanner
 
-class ListFileScanner extends FileScanner{
+  // This class has the concrete implementation via Array.List 
+class ListFileScanner extends AbstractFileScanner{
   
    override def scan(filePath: String, searchKeyWord: String, occurance:Int): Array[String] = {
-      val lines:List[String] = Source.fromFile(filePath).getLines().toList.filter(_.contains(searchKeyWord)).take(occurance)
+      val lines:List[String] = readLines(filePath).toList.filter(_.contains(searchKeyWord)).take(occurance)
       lines.toArray
    }
 }

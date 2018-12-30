@@ -1,8 +1,9 @@
 package com.training.scala.main
 
-import com.training.scala.scanner.FileScanner
 import com.training.scala.scanner.list.ListFileScanner
 import com.training.scala.scanner.stream.StreamFileScanner
+import com.training.scala.scanner.stream.StreamFileScanner
+import com.training.scala.scanner.TraitFileScanner
 
 object FileScannerStarter {
   
@@ -19,7 +20,7 @@ object FileScannerStarter {
       else if(args(0).equalsIgnoreCase("strict")) false
       else throw new IllegalArgumentException("Invalid evaluation type. It should be lazy/strict")
     
-    var scanner:FileScanner = FileScannerFactory.getScanner(lazyEvaluation)
+    var scanner:TraitFileScanner = FileScannerFactory.getScanner(lazyEvaluation)
     
     val lines:Array[String] = scanner.scan(args(1), args(2), args(3).toInt);
     lines.foreach(println)
